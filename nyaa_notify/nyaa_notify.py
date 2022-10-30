@@ -58,7 +58,7 @@ if True:
 # | could try to send another notification next time it updates.      |
 # | Set the times you want to be notified in the pings field below.   |
 # | Akatsumekusa personally sets this value to 2 but the default      |
-# | value in here nyaa_notify.py is 1.                                |
+# | value here in nyaa_notify.py is 1.                                |
     pings = 1
 # +-------------------------------------------------------------------+
 # | These config values could be overwritten in cli. Use              |
