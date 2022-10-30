@@ -5,10 +5,10 @@ nyaa_notify.py is a script that helps you watch Nyaa and sends a desktop notific
 
 ```sh
 # Download the script
-wget "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-General-Scripts/master/nyaa_notify.py/nyaa_notify.py"
+wget "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-General-Scripts/master/nyaa_notify/nyaa_notify.py"
 
 # Install the requirments using pip
-python3 -m pip install -r "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-General-Scripts/master/nyaa_notify.py/requirements.txt"
+python3 -m pip install -r "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-General-Scripts/master/nyaa_notify/requirements.txt"
 
 # Run the script help
 ./nyaa_notify.py --help
