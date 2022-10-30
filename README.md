@@ -1,7 +1,7 @@
-## nyaa_notify.py
+## nyaa_notify.py \[Windows only\]
 
 Are you waiting for an episode on Nyaa but you have no idea when it will be out?  
-nyaa_notify.py is a script that helps you watch Nyaa and sends a Windows notification to you once a new episode is available.  
+nyaa_notify.py is a script that helps you watch Nyaa and sends a desktop notification to you once a new episode is available.  
 
 ```sh
 # Download the script
