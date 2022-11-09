@@ -109,7 +109,7 @@ def nyaa_notify() -> None:
         parser.add_argument("url", help="URL for the RSS feed (set in nyaa_notify.py: \"" + feed + "\")", nargs="?", default=feed)
     else:
         parser.add_argument("url", help="URL for the RSS feed")
-    parser.add_argument("-i", "--interval", help="set the update interval in minutes (default: " + str(update_interval * 60) + ")", type=float, default=update_interval)
+    parser.add_argument("-i", "--interval", help="set the update interval in minutes (default: " + str(update_interval) + ")", type=float, default=update_interval)
     parser.add_argument("-t", "--traceback", help="set traceback in minutes (default: " + str(traceback) + ")", type=float, default=traceback)
     parser.add_argument("-p", "--pings", help="set the number of notifications you want to receive for each entry (default: " + str(pings) + ")", type=int, default=pings)
     
