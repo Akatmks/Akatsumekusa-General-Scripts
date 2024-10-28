@@ -24,7 +24,7 @@ Both left and right parameters support:
 - Keyframe format files (files starting with `# keyframe format v1`), and  
 - Folders containing these three types of files.
 
-Yes! it supports comparing between entire folders. It will recognise episode numbers from filename, and most likely you won't need to rename or move the files inside the folders for it to work.  
+Yes! it supports comparing between entire folders. It will recognise episode numbers from filename, and most likely you won't need to rename or move any files inside the folders for it to work.  
 ```sh
 python3 "TimingOffset.py" "TV Batch Folder" "BD Encode Folder"
 ```
