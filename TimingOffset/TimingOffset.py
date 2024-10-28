@@ -243,8 +243,8 @@ def guess_offset(left: np.ndarray[bool], right: np.ndarray[bool]) -> typing.Opti
         return a_message + b_message
 
 parser = argparse.ArgumentParser(prog="TimingOffset", description="Detect whether Web and BD sources align based on video keyframe")
-parser.add_argument("left", type=Path, help="The clip to compare. Supports video file, lwi file, keyframe format file, or directory containing such files (smart)")
-parser.add_argument("right", type=Path, help="The clip to compare against. Supports video file, lwi file, keyframe format file, or directory containing such files (smart)")
+parser.add_argument("left", type=Path, help="The clip to compare against. Supports video file, lwi file, keyframe format file, or directory containing such files (smart)")
+parser.add_argument("right", type=Path, help="The clip to compare. Supports video file, lwi file, keyframe format file, or directory containing such files (smart)")
 args = parser.parse_args()
 left = args.left
 right = args.right
@@ -318,7 +318,7 @@ for i in range(len(left)):
     if message:
         messaged = True
         if match:
-            print(f"\r\033[1A\033[K\033[1;37mOffsets in Episode {float(match.group(1)):02g} between left target \033[0m\"{left[i].name}\"\033[1;37m and right reference \033[0m\"{right[i].name}\"\033[1;37m:\033[0m", end="\n")
+            print(f"\r\033[1A\033[K\033[1;37mOffsets in Episode {float(match.group(1)):02g} between left reference \033[0m\"{left[i].name}\"\033[1;37m and right target \033[0m\"{right[i].name}\"\033[1;37m:\033[0m", end="\n")
             print(message, end="")
         else:
             print(message, end="")
