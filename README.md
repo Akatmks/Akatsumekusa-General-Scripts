@@ -16,7 +16,7 @@ Detect whether Web and BD sources align based on video keyframe \(It's suprising
 ```sh
 python3 "TimingOffset.py" "left.mkv" "right.mkv"
 ```
-Replace `left.mkv` and `right.mkv` with the files you want to compare. If you are comparing Web sources against BD sources, put the Web sources on the left and BD sources on the right. After running the command, TimingOffset.py will analyse the two files (or folders) and print the report to the terminal.  
+Replace `left.mkv` and `right.mkv` with the files you want to compare. If you are comparing Web sources against BD sources, put the BD sources on the left and Web sources on the right. After running the command, TimingOffset.py will analyse the two files (or folders) and print the report to the terminal.  
 
 Both left and right parameters support:  
 - Video files,  
@@ -26,7 +26,7 @@ Both left and right parameters support:
 
 Yes! it supports comparing between entire folders. It will recognise episode numbers from filename, and most likely you won't need to rename or move any files inside the folders for it to work.  
 ```sh
-python3 "TimingOffset.py" "TV Batch Folder" "BD Encode Folder"
+python3 "TimingOffset.py" "BD Encode Folder" "TV Batch Folder"
 ```
 
 Note that in order for TimingOffset.py to work, the video files or lwi files fed to TimingOffset.py must be encoded with variable GOP. Most encodes from encoders or subtitle groups has variable GOP, but most sources directly from streaming platforms doesn't.  
