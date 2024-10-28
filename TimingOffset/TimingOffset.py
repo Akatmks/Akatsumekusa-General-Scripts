@@ -26,13 +26,18 @@
 # ---------------------------------------------------------------------
 
 import argparse
+import os
 from pathlib import Path
+import platform
 import math
 import numpy as np
 import re
 from sklearn.preprocessing import StandardScaler
 import tempfile
 import typing
+
+if platform.system() == "Windows":
+    os.system("")
 
 def get_keyframes_keyframe_format(f: typing.TextIO) -> list[int]:
     lines = []
