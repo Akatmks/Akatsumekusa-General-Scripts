@@ -39,6 +39,16 @@ import typing
 if platform.system() == "Windows":
     os.system("")
 
+fps_num = 24000
+fps_den = 1001
+def print_frame(frame: int) -> str:
+    return f"frame {frame} ({frame // (fps_num / fps_den * 60):02.0f}:{(frame % (fps_num / fps_den * 60)) // (fps_num / fps_den):02.0f})"
+def print_offset(offset: int) -> str:
+    if offset < 240:
+        return f"{str(offset - 240)}f"
+    else:
+        return f"+{str(offset - 240)}f"
+
 def get_keyframes_keyframe_format(f: typing.TextIO) -> list[int]:
     lines = []
     while True:
@@ -82,11 +92,17 @@ def get_keyframes_lwi(f: typing.TextIO) -> np.ndarray[bool]:
 def get_keyframes_video(clip: Path) -> np.ndarray[bool]:
     from vapoursynth import core
 
+    global fps_num
+    global fps_den
+
     with tempfile.TemporaryDirectory(prefix="TimingOffset") as cache:
         cachefile = Path(cache).joinpath("TimingOffset.lwi")
         clip = core.lsmas.LWLibavSource(clip.as_posix(), cache=True, cachefile=cachefile.as_posix())
         print("\r\033[1A\033[K", end="")
-
+        if clip.fps.numerator != 0 and clip.fps.denominator != 0:
+            fps_num = clip.fps.numerator
+            fps_den = clip.fps.denominator
+        
         with cachefile.open("r", encoding="utf-8") as f:
             return get_keyframes_lwi(f)
 
@@ -152,13 +168,6 @@ def inflate_keyframes_array(left: typing.Union[list[int], np.ndarray[bool]], rig
             new_right[n] = True
         return new_left, new_right
 
-def print_frame(frame: int) -> str:
-    return f"frame {frame} ({frame // (24000 / 1001 * 60):02.0f}:{(frame % (24000 / 1001 * 60)) // (24000 / 1001):02.0f})"
-def print_offset(offset: int) -> str:
-    if offset < 240:
-        return f"{str(offset - 240)}f"
-    else:
-        return f"+{str(offset - 240)}f"
 this_is_likely_due_to = True
 
 # Caller must assure that range was valid for both left and right array.
