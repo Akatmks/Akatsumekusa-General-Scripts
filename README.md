@@ -33,7 +33,7 @@ python3 "TimingOffset.py" "TV Batch Folder" "BD Encode Folder"
 
 Note that in order for TimingOffset.py to work, the video files or lwi files fed to TimingOffset.py must be encoded with variable GOP. Most encodes from encoders or subtitle groups have variable GOP, but most sources directly from streaming platforms don't.  
 
-On another note, there is an existing program called [Sushi](https://github.com/tp7/Sushi) from [Victor Efimov](https://github.com/tp7) that can compare between audio and recognise timing offsets. Shifting subtitles based solely on audio isn't as reliable, or even desirable as shifting based on video. However, it may be a good idea to shift the dialogue based on audio, and then resnap to video scene changes. Thanks to natsuakge for recommending Sushi as an alternative.  
+On another note, there is an existing program called [Sushi](https://github.com/tp7/Sushi) from [Victor Efimov](https://github.com/tp7) that can compare between audio and recognise timing offsets. Shifting subtitles based solely on audio isn't as reliable, or even desirable as shifting based on video. However, it may be a good idea to shift the dialogue based on audio, and then resnap to video scene changes. Thanks to natsukage for recommending Sushi as an alternative.  
 
 ## nyaa_notify.py \[Windows only\]
 
