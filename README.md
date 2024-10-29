@@ -31,7 +31,7 @@ Yes! it supports comparing between entire folders. It will recognise episode num
 python3 "TimingOffset.py" "TV Batch Folder" "BD Encode Folder"
 ```
 
-Note that in order for TimingOffset.py to work, the video files or lwi files fed to TimingOffset.py must be encoded with variable GOP. Most encodes from encoders or subtitle groups has variable GOP, but most sources directly from streaming platforms doesn't.  
+Note that in order for TimingOffset.py to work, the video files or lwi files fed to TimingOffset.py must be encoded with variable GOP. Most encodes from encoders or subtitle groups have variable GOP, but most sources directly from streaming platforms don't.  
 
 ## nyaa_notify.py \[Windows only\]
 
