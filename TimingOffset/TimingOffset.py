@@ -33,6 +33,7 @@ import math
 import numpy as np
 import re
 from sklearn.preprocessing import StandardScaler
+import sys
 import tempfile
 import typing
 
@@ -98,7 +99,7 @@ def get_keyframes_video(clip: Path) -> np.ndarray[bool]:
     with tempfile.TemporaryDirectory(prefix="TimingOffset") as cache:
         cachefile = Path(cache).joinpath("TimingOffset.lwi")
         clip = core.lsmas.LWLibavSource(clip.as_posix(), cache=True, cachefile=cachefile.as_posix())
-        print("\r\033[1A\033[K", end="")
+        print("\r\033[1A\033[K", end="", file=sys.stderr)
         if clip.fps.numerator != 0 and clip.fps.denominator != 0:
             fps_num = clip.fps.numerator
             fps_den = clip.fps.denominator
@@ -258,7 +259,7 @@ args = parser.parse_args()
 left = args.left
 right = args.right
 
-file_match = re.compile(r"(?<![a-z0-9A-DF-Z])([0-9]{2}(?:\.[0-9])?)(?![a-uw-z0-9A-Z])")
+file_match = re.compile(r"(?<![a-z0-9A-DF-OQ-Z])([0-9]{2,3}(?:\.[0-9])?)[^a-uw-z0-9A-Z\.]")
 messaged = False
 
 def convert_path_to_list_of_files(path: Path):
@@ -318,7 +319,7 @@ if len(left) == 0:
     raise ValueError(f"No file is recognised in either provided directories.")
 
 for i in range(len(left)):
-    if (match := file_match.search(left[i].name)):
+    if (match := file_match.search(right[i].name)) or (match := file_match.search(left[i].name)):
         print(f"\033[1;37mComparing Episode {float(match.group(1)):02g}...\033[0m", end="\n")
     left_ = get_keyframes(left[i])
     right_ = get_keyframes(right[i])
