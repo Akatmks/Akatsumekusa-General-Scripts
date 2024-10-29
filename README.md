@@ -2,6 +2,8 @@
 
 Detect whether Web and BD sources align based on video keyframe \(It's suprisingly effective!\).  
 
+<img src="https://github.com/user-attachments/assets/154476e1-8ea6-41ba-b033-702b731827c4" alt="TimingOffset.py Function Preview" width="564" />
+
 ### Installing TimingOffset.py
 
 1. Install [VapourSynth](https://www.vapoursynth.com/) and install [lsmas](https://vsdb.top/plugins/lsmas) to the VapourSynth.  
