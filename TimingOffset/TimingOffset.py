@@ -63,13 +63,10 @@ def get_keyframes_keyframe_format(f: typing.TextIO) -> list[int]:
         if line.startswith("#") or line.startswith("fps"):
             continue
 
-        line = line.rstrip()
-        if line:
-            try:
-                line = int(line)
-            except ValueError:
-                continue
-            lines.append(line)
+        try:
+            lines.append(int(line.split()[0]))
+        except (IndexError, ValueError):
+            continue
 
     return lines
 
@@ -148,7 +145,9 @@ def get_keyframes(clip: Path) -> typing.Union[list[int], np.ndarray[bool]]:
         return get_keyframes_video(clip)
 
 def inflate_keyframes_array(left: typing.Union[list[int], np.ndarray[bool]], right: typing.Union[list[int], np.ndarray[bool]]) -> tuple[np.ndarray[bool], np.ndarray[bool]]:
-    if (left_type := isinstance(left, np.ndarray)) and (right_type := isinstance(right, np.ndarray)):
+    left_type = isinstance(left, np.ndarray)
+    right_type = isinstance(right, np.ndarray)
+    if left_type and right_type:
         return left, right
     elif left_type and (not right_type):
         new_right = np.zeros_like(left)
@@ -161,7 +160,7 @@ def inflate_keyframes_array(left: typing.Union[list[int], np.ndarray[bool]], rig
             new_left[n] = True
         return new_left, right
     else:
-        new_left = np.zeros(max(left[-1], right[-1]), dtype=bool)
+        new_left = np.zeros(max(left[-1] + 1, right[-1] + 1), dtype=bool)
         new_right = np.zeros_like(new_left)
         for n in left:
             new_left[n] = True
